@@ -1,0 +1,15 @@
+.filterHeader {
+    display: flex;
+    justify-content: space-between;
+}
+.coloredLabelWrap {
+    display: flex;
+    align-items: center;
+    color: #6e6d66;
+}
+.coloredLabel {
+    width: 20px;
+    height: 10px;
+    border-radius: 20px;
+    margin-right: 5px;
+}

@@ -1,0 +1,13 @@
+.pokemonPagination {
+    display: flex;
+    margin-top: 20px;
+    align-items: baseline;
+    justify-content: center;
+}
+
+@media (max-width: 767px) {
+    .pokemonPagination {
+        flex-direction: column;
+        align-items: center;
+    }
+}

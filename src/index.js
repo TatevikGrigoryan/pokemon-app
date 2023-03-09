@@ -8,21 +8,22 @@ import { Provider } from 'react-redux'
 import MainLayout from './layouts/MainLayout'
 import NotFound from './layouts/NotFound'
 import store from './store'
+import PokemonList from './pages/PokemonList'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
-          <Route index element={<MainLayout />}>
-
+          <Route path='pokemon' element={<MainLayout />}>
+            <Route index element={<PokemonList />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
