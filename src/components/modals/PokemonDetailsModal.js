@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { openModal } from '../../store/slice/modalSlice'
 import { useEffect, useState } from 'react'
 import { getPokemonSpaces } from '../../api/PokemonApi'
-import '../../assets/modal/detailsModal.css'
+import '../../assets/modal/pokemonDetails.scss'
 import { setPokemon } from '../../store/slice/pokemonDetailsSlice'
 
 const style = {
@@ -50,9 +50,9 @@ const PokemonDetailsModal = () => {
 			aria-labelledby="keep-mounted-modal-title"
 			aria-describedby="keep-mounted-modal-description"
 		>
-			<Box sx={style} className={"detailsModal"}>
+			<Box sx={style} className="details-modal">
 				<div>
-					<Typography variant="h6" component="h2" className={"detailsModalTitle"} mb={'20px'}>
+					<Typography variant="h6" component="h2" className="details-modal__title" mb={'20px'}>
 						{pokemon.name}
 					</Typography>
 
@@ -64,7 +64,7 @@ const PokemonDetailsModal = () => {
 					/>
 				</div>
 
-				<div className="detailsInfo">
+				<div className="details-modal__info">
 					<Typography variant="body2" color="text.secondary" mt={'5px'}>
 						Happiness - {species.base_happiness}
 					</Typography>
