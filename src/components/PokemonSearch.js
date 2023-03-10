@@ -1,6 +1,6 @@
 import { InputAdornment, TextField } from '@mui/material'
 import { Search } from '@mui/icons-material'
-import '../assets/pokemonSearch.css'
+import '../assets/pokemonSearch.scss'
 import { useState } from 'react'
 
 const PokemonSearch = ({ changeSearch, search}) => {
@@ -27,7 +27,7 @@ const PokemonSearch = ({ changeSearch, search}) => {
 			id="input-with-icon-textfield"
 			InputProps={{
 				classes: {
-					input: 'pokemonSearch',
+					input: 'pokemon-search',
 				},
 				placeholder: 'Enter valid name or id',
 				startAdornment: (
@@ -44,4 +44,4 @@ const PokemonSearch = ({ changeSearch, search}) => {
 	)
  }
 
- export default PokemonSearch
+export default PokemonSearch

@@ -1,12 +1,15 @@
-.pokemonBadge {
+@import "main";
+
+.pokemon_badge {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #FFFFFF;
-    padding: 0px 8px;
+    color: $white-color;
+    padding: 0 8px;
     margin-right: 5px;
     border-radius: 10px;
     font-size: 10px;
     height: 20px;
     line-height: 20px;
+    min-width: 40px;
 }

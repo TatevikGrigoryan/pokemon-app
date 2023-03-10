@@ -1,15 +1,16 @@
-import { CircularProgress, Container, Grid, Stack, Typography } from '@mui/material'
+import { CircularProgress, Typography } from '@mui/material'
 import PokemonCard from '../components/PokemonCard'
 import { useEffect, useState } from 'react'
 import { getPokemonByName, getPokemons } from '../api/PokemonApi'
 import api from '../api/AxiosApi'
-import '../assets/pokemonList.css'
+import '../assets/pokemonsList.scss'
 import PokemonPagination from '../components/PokemonPagination'
 import { useDispatch, useSelector } from 'react-redux'
 import PokemonFilter from '../components/filter/PokemonFilter'
 import PokemonDetailsModal from '../components/modals/PokemonDetailsModal'
 import { openModal } from '../store/slice/modalSlice'
 import { setPokemon } from '../store/slice/pokemonDetailsSlice'
+import PokemonHeader from '../components/PokemonHeader'
 
 const PokemonList = () => {
 	const search = useSelector((state) => state.pokemons.search)
@@ -99,7 +100,7 @@ const PokemonList = () => {
 
 	const renderLoading = () => {
 		return (
-			<div className='noPokemon'>
+			<div className="pokemon-list__no-pokemon">
 				<CircularProgress color="primary" />
 			</div>
 		)
@@ -116,7 +117,7 @@ const PokemonList = () => {
 	const renderNoPokemon = () => {
 		if (search) {
 			return (
-				<div className='noPokemon'>
+				<div className="pokemon-list__no-pokemon">
 					<Typography color="text.secondary" >
 						No pokemon found for name "{search}"
 					</Typography>
@@ -125,47 +126,51 @@ const PokemonList = () => {
 		}
 
 		return (
-			<div className='noPokemon'>
+			<div className="pokemon-list__no-pokemon">
 				<Typography color="text.secondary">No pokemon</Typography>
 			</div>
 		)
 	}
 
 	return (
-		<div className={'pokemonListContainer'}>
-			<PokemonFilter
-				handleSelect={handleSelect}
-				selectedTypes={selectedTypes}
-			/>
-			<div className="pokemonListContent">
-				{ !loading && !filteredPokemons.length && renderNoPokemon() }
+		<>
+			<PokemonHeader />
 
-				{ filteredPokemons.length > 0 && (
-					<div className={'pokemonListWrap'}>
-						<div className={'pokemonCardsWrap'}>
-							{ loading ? renderLoading() : (
-								filteredPokemons.map((pokemon) => (
-									<div key={pokemon.id}>
-										<PokemonCard pokemon={pokemon} openDetails={handleOpen} />
-									</div>
-								)))}
+			<div className="pokemon-list">
+				<PokemonFilter
+					handleSelect={handleSelect}
+					selectedTypes={selectedTypes}
+				/>
+				<div className="pokemon-list__main">
+					{ !loading && !filteredPokemons.length && renderNoPokemon() }
+
+					{ filteredPokemons.length > 0 && (
+						<div className="pokemon-list__main__wrapper">
+							<div className="pokemon-list__main__wrapper__cards">
+								{ loading ? renderLoading() : (
+									filteredPokemons.map((pokemon) => (
+										<div key={pokemon.id}>
+											<PokemonCard pokemon={pokemon} openDetails={handleOpen} />
+										</div>
+									)))}
+							</div>
+
+							<PokemonPagination
+								count={total}
+								page={page}
+								perPage={perPage}
+								handleChange={(event, value) => {setPage(value)}}
+								changePerPage={(value) => {setPerPage(value.value)}}
+								option={perPageOption}
+								disable={search}
+							/>
 						</div>
+					)}
+				</div>
 
-						<PokemonPagination
-							count={total}
-							page={page}
-							perPage={perPage}
-							handleChange={(event, value) => {setPage(value)}}
-							changePerPage={(value) => {setPerPage(value.value)}}
-							option={perPageOption}
-							disable={search}
-						/>
-					</div>
-				)}
+				<PokemonDetailsModal />
 			</div>
-
-			<PokemonDetailsModal />
-		</div>
+		</>
 	)
 }
 

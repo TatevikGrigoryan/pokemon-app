@@ -1,0 +1,45 @@
+.pokemon-list {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 80px 40px;
+
+  &__main {
+    display: flex;
+    flex: 1;
+
+    &__wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__cards {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        & > div {
+          justify-content: center;
+          display: flex;
+          min-width: 250px;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+
+  &__no-pokemon {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pokemon-list {
+    flex-direction: column;
+  }
+}

@@ -4,7 +4,7 @@ import {
 	Pagination,
 	Select,
 } from '@mui/material'
-import '../assets/pokemonPagination.css'
+import '../assets/pokemonPagination.scss'
 
 const PokemonPagination = ({
 	count,
@@ -16,7 +16,7 @@ const PokemonPagination = ({
 	disable
 }) => {
 	return (
-		<div className={'pokemonPagination'}>
+		<div className="pokemon-pagination">
 			<Pagination count={count} page={page} onChange={handleChange} siblingCount={0} disabled={!!disable} />
 
 			<FormControl variant="standard" sx={{ m: 1, maxWidth: 80 }} disabled={!!disable}>

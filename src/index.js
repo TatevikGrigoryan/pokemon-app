@@ -1,29 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './index.scss';
+import './assets/main.scss';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import MainLayout from './layouts/MainLayout'
 import NotFound from './layouts/NotFound'
 import store from './store'
 import PokemonList from './pages/PokemonList'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <Routes>
-          <Route path='pokemon' element={<MainLayout />}>
-            <Route index element={<PokemonList />} />
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </Provider>
-    </BrowserRouter>
-  // </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <Routes>
+        <Route index element={<PokemonList />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,9 +1,9 @@
-import '../assets/pokemonBadge.css'
+import '../assets/pokemonBadge.scss'
 
 const PokemonBadge = ({value, color}) => {
 	return (
 		<div
-			className={'pokemonBadge'}
+			className="pokemon_badge"
 			style={{background: color}}
 		>
 			{value}

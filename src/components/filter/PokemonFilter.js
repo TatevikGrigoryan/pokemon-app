@@ -1,9 +1,9 @@
 import FilterByType from './FilterByType'
-import '../../assets/pokemonFilter.css'
+import '../../assets/filter/pokemonFilter.scss'
 
 const PokemonFilter = ({ handleSelect, selectedTypes }) => {
 	return (
-		<div className={'pokemonFilter'}>
+		<div className="pokemon-filter">
 			<FilterByType
 				handleSelect={handleSelect}
 				selectedTypes={selectedTypes}
